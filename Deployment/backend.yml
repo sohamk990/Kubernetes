@@ -1,0 +1,31 @@
+apiVersion: apps/v1 #
+
+kind: Deployment #deployment / service
+
+metadata: #deployment metadata
+  name: imt2018073-calculator 
+  labels:
+    app: calculator
+
+
+spec: #specifications
+  replicas: 3 #count of pods
+  
+  selector:
+    matchLabels:
+      app: calculator
+
+  template:
+    metadata:
+      labels:
+        app: calculator
+    spec:
+      containers:
+      - name: calculator
+        image: imt2018073/calculator:latest
+        # stdin: true #console log
+        # stdout: true #console log
+        tty: true #console
+        # it: true
+        # ports:
+        # - containerPort: 80
