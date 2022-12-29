@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: server
+
+spec:
+
+  selector:
+    matchLabels:
+      run: server
+
+  template:
+    metadata:
+      labels:
+        run: server
+
+    spec:
+      containers:
+      - name: server
+        image: imt2018073/server
+        ports:
+        - containerPort: 80
+
+        resources:
+          limits:
+            cpu: 500m
+
+          requests:
+            cpu: 200m
